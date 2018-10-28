@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cinema_ERM.xamarin.Views.LoginPage"
+             Title="Ingreso">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Ingreso a CinemaERM"/>
+            <Entry x:Name="usuario"/>
+            <Entry x:Name="Password"/>
+            <Button Clicked="Continuar"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

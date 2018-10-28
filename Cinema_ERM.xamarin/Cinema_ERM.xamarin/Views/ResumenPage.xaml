@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cinema_ERM.xamarin.Views.ResumenPage"
+             Title="Resumen Compra">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="resumenpeli">
+                <Image Source="{Binding Imagen}" HeightRequest="60"/>
+                <Label Text="Pelicula"/>
+                <Label Text="{Binding Nombre, StringFormat='Titulo: {0:F0}'}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Estreno: "/>
+                    <Label Text="{Binding FechaEstreno}"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="infopeli">
+                <Label Text="{Binding Cinema, StringFormat='Cinema: {0:F0}'}"/>
+                <Label Text="{Binding Sala, StringFormat='Sala: {0:F0}'}"/>
+                <Label Text="{Binding Ciudad, StringFormat='Ciudad: {0:F0}'}"/>
+                <Label Text="Tiquetes"/>
+                <Label Text="{Binding Precio, StringFormat='Precio: {0:F0}'}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Cantidad: "/>
+                    <Label x:Name="lbl1" Text=""/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Total a pagar: "/>
+                    <Label x:Name="lbl2"  Text=""/>
+                </StackLayout>
+                <Button Clicked="Finalizar" Text="Finalizar Compra"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
