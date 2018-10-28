@@ -12,8 +12,8 @@ namespace Cinema_ERM.xamarin
 		{
 			InitializeComponent();
 
-			MainPage = new CarteleraPage();
-		}
+			MainPage = new NavigationPage(new LoginPage());
+        }
 
 		protected override void OnStart ()
 		{
