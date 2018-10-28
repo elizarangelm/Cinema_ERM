@@ -12,14 +12,14 @@ using Xamarin.Forms.Xaml;
 
 namespace Cinema_ERM.xamarin.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FuncionPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FuncionPage : ContentPage
     {
-        {
+
         Cartelera infopeli;
-        public FuncionPage (Cartelera cartelera)
-		{
-			InitializeComponent ();
+        public FuncionPage(Cartelera cartelera)
+        {
+            InitializeComponent();
             BindingContext = cartelera;
             listFuncion.ItemsSource = cartelera.Funciones;
             infopeli = cartelera;

@@ -42,4 +42,5 @@ namespace Cinema_ERM.xamarin.Views
                 }
             }
         }
+    }
 }
