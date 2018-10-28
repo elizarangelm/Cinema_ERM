@@ -24,7 +24,7 @@ namespace Cinema_ERM.xamarin.Views
         }
         private void Finalizar(object sender, EventArgs e)
         {
-            DisplayAlert("Reserva", "Reserva exitosa", "Finalizar");
+            DisplayAlert("Reserva", "“La reserva se ha generado correctamente", "Finalizar");
         }
     }
 }
