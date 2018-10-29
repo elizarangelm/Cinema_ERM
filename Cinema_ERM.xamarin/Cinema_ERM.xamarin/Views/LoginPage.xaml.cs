@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -19,28 +20,52 @@ namespace Cinema_ERM.xamarin.Views
         {
             InitializeComponent();
         }
-        private async void Continuar(object sender, EventArgs e)
+        HttpClient client = new HttpClient();
+        public async Task GuardarLoginAsync(Iniciousuario item, bool isNewItem = false)
         {
-            HttpClient cliente = new HttpClient();
-            cliente.BaseAddress = new Uri("https://misapis.azurewebsites.net");
+            var uri = new Uri("https://misapis.azurewebsites.net");
 
-            var content = new StringContent("Usuario: " + usuario.Text + "Contraseña: " + Password.Text, Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "api/Seguridad");
 
-            var response = cliente.PostAsync("/api/Seguridad", content).Result;
+            HttpResponseMessage response = null;
+            if (isNewItem)
+            {
+                response = await client.PostAsync(uri, content);
+            }
             if (response.IsSuccessStatusCode)
             {
-                var respuestaJson = await response.Content.ReadAsStringAsync();
-                var verificacion = JsonConvert.DeserializeObject<Usuario>(respuestaJson);
-                if (verificacion.EsPermitido == true)
-                {
-                    await DisplayAlert("Resultado", verificacion.Mensaje, "Continue");
-                    await Navigation.PushAsync(new CarteleraPage());
-                }
-                else
-                {
-                    await DisplayAlert("Incorrecto", verificacion.Mensaje, "Intente de nuevo");
-                }
+                Debug.WriteLine(@"Login successfully saved.");
+
             }
+        }
+        async void Continuar(object sender, EventArgs e)
+        {
+            var usuario = new Iniciousuario
+            {
+                Usuario = usuarioentry.Text,
+                Password = Passwordentry.Text
+            };
+
+            var isValid = AreCredentialsCorrect(usuario);
+            if (isValid)
+            {
+                App.IsUserLoggedIn = true;
+                Navigation.InsertPageBefore(new CarteleraPage(), this);
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                Label1.Text = "El Usuario No Es Permitido";
+                Passwordentry.Text = string.Empty;
+            }
+        }
+
+
+        bool AreCredentialsCorrect(Iniciousuario usuario)
+        {
+            return usuario.Usuario == Requerimientos.Username && usuario.Password == Requerimientos.Password;
+
         }
     }
 }

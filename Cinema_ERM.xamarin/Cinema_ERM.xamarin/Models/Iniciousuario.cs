@@ -4,9 +4,11 @@ using System.Text;
 
 namespace Cinema_ERM.xamarin.Models
 {
-    class Usuario
+    public class Iniciousuario
     {
-        public bool EsPermitido { get; set; }
-        public string Mensaje { get; set; }
+        public string Usuario { get; set; }
+
+        public string Password { get; set; }
+
     }
 }

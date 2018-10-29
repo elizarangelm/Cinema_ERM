@@ -6,9 +6,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Ingreso a CinemaERM"/>
-            <Entry x:Name="usuario"/>
-            <Entry x:Name="Password"/>
-            <Button Clicked="Continuar"/>
+            <Entry x:Name="usuarioentry" Placeholder="Ingrese El Usuario"/>
+            <Entry x:Name="Passwordentry" Placeholder="Ingrese La Contraseña"/>
+            <Button Clicked="Continuar" Text="Ingresar"/>
+            <Label x:Name="Label1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
